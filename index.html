@@ -16,10 +16,18 @@
 
     </div>
     <div id="buttons">
-      <button onclick="HandleBoardGeneration()">Create Board</button>
+      <button onclick="HandleBoardGeneration4()">Create 4x4 Board</button>
+      <button onclick="HandleBoardGeneration5()">Create 5x5 Board</button>
       <button onclick="HandleGetBoard()">Get Board</button>
 
     </div>
+    <div>
+
+      <input type="checkbox" id="challengeCubeOn" name="challengeCubeOn"
+      checked>
+<label for="Challenge Cube">Challenge Cube</label>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/letters.js"></script>

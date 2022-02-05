@@ -20,13 +20,29 @@ canv.id = "gameCanvas"
 gameContainer.appendChild(canv)
 
 
+var boardSize = 4
+
 
 function HandleInit(msg){
     console.log(msg);
 
 }
 
-function HandleBoardGeneration(){
+function HandleBoardGeneration4(){
+
+    boardSize = 4;
+
+    console.log('genbo')
+    var board = CreateBoard(boardSize)
+    // DrawBoard(board, boardSize);
+
+    socket.emit('generateBoard', board)
+
+}
+
+function HandleBoardGeneration5(){
+
+    boardSize = 5;
 
     console.log('genbo')
     var board = CreateBoard(boardSize)
@@ -37,6 +53,7 @@ function HandleBoardGeneration(){
 }
 
 function RecieveBoard(board){
+    boardSize = board.length
     DrawBoard(board, boardSize);
 
 }

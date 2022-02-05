@@ -2,10 +2,19 @@ function CreateBoard(boardSize){
 
     board = [];
     // console.log(cubeLetters)
+    const challengeCubeOption = document.getElementById('challengeCubeOn').checked
 
-    cubesCopy = [...cubeLetters]
+
+    
+    cubesCopy = [...cubeLetters[boardSize - 4]]
     cubes = randomOrder(cubesCopy);
     // console.log(cubes);
+
+    if (challengeCubeOption == true){
+        randomIndexToReplace = Math.floor(Math.random() * cubes.length)
+        cubes[randomIndexToReplace] = challengeCube
+    }
+
     for(let rowIndex = 0; rowIndex < boardSize; rowIndex++){
         row = [];
         
@@ -78,7 +87,7 @@ function DrawBoard(board, boardSize){
 
 
 
-const boardSize = 4
 
-var board = CreateBoard(boardSize);
-DrawBoard(board, boardSize);
+
+var board = CreateBoard(4);
+DrawBoard(board, 4);
