@@ -19,8 +19,22 @@ canv.id = "gameCanvas"
 
 gameContainer.appendChild(canv)
 
+var wordleRunning = false;
+
 
 var boardSize = 4
+
+
+var canvas = document.getElementById("gameCanvas");
+canvas.height = 500;
+canvas.width = 900;
+
+var c = canvas.getContext("2d");
+c.font = "30px Arial";
+
+
+
+
 
 
 function HandleInit(msg){
@@ -62,4 +76,11 @@ function HandleGetBoard(){
 
     socket.emit('requestBoard')
 
+}
+
+function InitWordle(){
+
+    if (wordleRunning == false){
+    WordleSetUp(6);
+    }
 }
