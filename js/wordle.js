@@ -6,25 +6,20 @@ function WordleSetUp(wordLength){
 
     wordleRunning = true;
 
+    var letterDict = createLetterArray();
+    
+
+
+    // select answer from wordlist
     var possibleAnswers;
-
     if (wordLength == 5){
-
         possibleAnswers = answers_5
-
     }
     if (wordLength == 6){
-
         possibleAnswers = answers_6
-
     }
-
     var randomWordIndex = Math.floor(Math.random() * possibleAnswers.length)
-
     var word = possibleAnswers[randomWordIndex];
-
-
-
 
     var gameSize = word.length;
     
@@ -118,16 +113,21 @@ function drawWordle(currentLine, currentGuess, previousGuesses){
             
             c.fillStyle='#00AA00';
             c.fillRect(250 + index * 80, 50 + lineNumber * 70, 80, 70);
+            letterDict[char].classList.add('perfectLetter')
+
             }
             else if (word.includes(char)){
             
                 c.fillStyle='#888800';
                 c.fillRect(250 + index * 80, 50 + lineNumber * 70, 80, 70);
+                letterDict[char].classList.add('someLetter')
+
             }
             else{
             
                 c.fillStyle='#aaaaaa';
                 c.fillRect(250 + index * 80, 50 + lineNumber * 70, 80, 70);
+                letterDict[char].classList.add('noLetter')
             }
         
 
@@ -158,4 +158,21 @@ function IsWord(guess){
 
 
 
+}
+
+function createLetterArray(){
+
+    letterDict = {};
+
+    letterArea = document.getElementById('letter-area');
+
+    'qwertyuiopasdfghjklzcvbnm'.split('').forEach(letter => {
+
+        letterButton = document.createElement('button')
+        letterButton.innerHTML = letter;
+        letterArea.appendChild(letterButton)
+        letterDict[letter] = letterButton;
+    })
+
+    return letterDict;
 }

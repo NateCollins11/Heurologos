@@ -32,7 +32,8 @@ canvas.width = 900;
 var c = canvas.getContext("2d");
 c.font = "30px Arial";
 
-
+var ticking = false
+var timerCount;
 
 
 
@@ -67,9 +68,18 @@ function HandleBoardGeneration5(){
 }
 
 function RecieveBoard(board){
-    boardSize = board.length
-    DrawBoard(board, boardSize);
+    if (wordleRunning == false){
+        boardSize = board.length
+        DrawBoard(board, boardSize);
 
+        timerCount = 180
+
+        if (ticking == false){
+
+            TickCycle(timerCount)
+        
+        }
+    }
 }
 
 function HandleGetBoard(){

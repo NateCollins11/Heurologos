@@ -1,6 +1,9 @@
 function CreateBoard(boardSize){
 
     board = [];
+
+    let timerDiv = document.getElementById("timer")
+
     // console.log(cubeLetters)
     const challengeCubeOption = document.getElementById('challengeCubeOn').checked
 
@@ -36,6 +39,11 @@ function CreateBoard(boardSize){
 
 
     }
+
+    // timer = document.getElementById("timer")
+
+
+
     return(board)
 
 
@@ -89,5 +97,22 @@ function DrawBoard(board, boardSize){
 
 
 
+
+
+
 var board = CreateBoard(4);
 DrawBoard(board, 4);
+
+
+function TickCycle(){
+
+    ticking = true
+
+    console.log('second #' + String(timerCount))
+    document.getElementById("timer").innerHTML = String(timerCount)
+    if (timerCount > 0){
+        timerCount -= 1;
+    }
+
+    setTimeout(TickCycle , 1000);
+}
